@@ -1,0 +1,5 @@
+# request part
+string inputString
+---
+# response part
+string outputString
