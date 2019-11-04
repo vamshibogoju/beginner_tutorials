@@ -3,7 +3,7 @@
 
 ## Overview
 
-This repository depicts the basic functionality of publisher and subscriber nodes os ROS.It is based on the tutorials from http://wiki.ros.org/ROS/Tutorials/ . In this tutorial a string is given as output when publisher and subscriber nodes are called.
+This repository depicts the basic functionality of publisher and subscriber nodes os ROS.It is based on the tutorials from http://wiki.ros.org/ROS/Tutorials/ . In this tutorial a string is given as output when publisher and subscriber nodes are called.This is created depict the usage of service file and logging levels of ros.
 
 ## Dependencies
 1) ROS distro: 'Kinetic'. 
@@ -32,6 +32,27 @@ In another terminal:
 cd ~/catkin_ws
 source ./devel/setup.bash
 rosrun beginner_tutorials listener
+```
+## Launch File
+To use launch file type the following command in the terminal:
+```
+roslaunch begineer_tutorials week10hw.launch
+```
+User can change the frequency at which the loop operates by the following command;
+```
+roslaunch begineer_tutorials week10HW.launch frequency:=5
+
+# Service
+
+If the user would like to change the output string message, type the following command in a new terminal
+```
+rosservice call /changeText "sample text"
+```
+
+# Logging in RQT console
+To see the message log in real time, use rqt_console GUI by typing the following command in a new terminal: 
+```
+rqt_console
 ```
 
 ## Cpplint check
