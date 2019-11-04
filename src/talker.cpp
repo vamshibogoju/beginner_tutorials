@@ -32,7 +32,7 @@ bool changeMessage(beginner_tutorials::baseOutputString::Request &req,
                    beginner_tutorials::baseOutputString::Response &res) {
   defaultMessage = req.inputString;
   ROS_WARN_STREAM("Default string is changed by user to");
-  res.modifiedString = req.inputString;
+  res.outputString = req.inputString;
 
   return true;
 }
@@ -107,7 +107,7 @@ int main(int argc, char **argv) {
    */
   ros::Publisher chatter_pub = n.advertise < std_msgs::String
       > ("chatter", 1000);
-  auto server = n.advertiseService("baseOutputString", changeMessage);
+  ros::ServiceServer server = n.advertiseService("baseOutputString", changeMessage);
 
   ros::Rate loop_rate(loopFreq);
 
