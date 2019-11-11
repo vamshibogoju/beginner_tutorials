@@ -139,11 +139,11 @@ int main(int argc, char **argv) {
     chatter_pub.publish(msg);
 
     // set translation and origin //
-    transform.setOrigin(tf::Vector3(0.0, 0.0, 0.0));
+    transform.setOrigin(tf::Vector3(10.0, 5.0, 2.0));
 
     // set rotation //
     tf::Quaternion q;
-    q.setRPY(0.0, 0.0, 1);
+    q.setRPY(1.0, 1.0, 1.0);
     transform.setRotation(q);
 
     // broadcasting the transform //
