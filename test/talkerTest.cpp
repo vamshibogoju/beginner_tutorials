@@ -53,8 +53,8 @@ TEST(testTalkerNode, testServiceExsistance) {
   ros::NodeHandle node;
 
   // Register the client to the service
-  ros::ServiceClient client = node.serviceClient < beginner_tutorials::baseOutputString
-      > ("baseOutputString");
+  ros::ServiceClient client = node.serviceClient
+      < beginner_tutorials::baseOutputString > ("baseOutputString");
 
   // Service existance check
   EXPECT_TRUE(client.waitForExistence(ros::Duration(5)));
@@ -70,8 +70,8 @@ TEST(testTalkerNode, testServiceMessageUpdate) {
   ros::NodeHandle node;
 
   // Register the client to the service
-  ros::ServiceClient client = node.serviceClient < beginner_tutorials::baseOutputString
-      > ("baseOutputString");
+  ros::ServiceClient client = node.serviceClient
+      < beginner_tutorials::baseOutputString > ("baseOutputString");
   // Initialize the service to srv object
   beginner_tutorials::baseOutputString srv;
 
@@ -84,5 +84,4 @@ TEST(testTalkerNode, testServiceMessageUpdate) {
   // tests to check whether the output and input are same
   EXPECT_STREQ("testMessage", srv.response.outputString.c_str());
 }
-
 

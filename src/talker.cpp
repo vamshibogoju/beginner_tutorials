@@ -53,7 +53,6 @@ int main(int argc, char **argv) {
     ROS_DEBUG_STREAM("loop operating at frequency of: " << loopFreq);
   } else if (loopFreq < 0) {
     ROS_ERROR_STREAM("The input frequency cannot be negative");
-
     ROS_WARN_STREAM("Setting to default frequency of 10Hz");
 
     // setting loopFreq to 10 hz
