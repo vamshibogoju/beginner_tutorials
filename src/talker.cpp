@@ -16,7 +16,7 @@
  * @copyright 2019
  * @copyright BSD 3-Clause License
  * @file Talker.cpp
- * @author Vamshi 
+ * @author Vamshi
  * @date 4/11/2019
  * @brief cpp implementation file for publisher node (talker) as part of ros tutorials
  */
@@ -25,6 +25,7 @@
 #include "ros/ros.h"
 #include "std_msgs/String.h"
 #include "beginner_tutorials/baseOutputString.h"
+#include <tf/transform_broadcaster.h>
 
 extern std::string defaultMessage = "hey this is vamshi";
 
@@ -42,6 +43,9 @@ bool changeMessage(beginner_tutorials::baseOutputString::Request &req,
  */
 int main(int argc, char **argv) {
   int loopFreq = 10;
+  // A transform broadcaster object is created
+  static tf::TransformBroadcaster br;
+  tf::Transform transform;
 
   if (argc > 1) {
     // converts string argument to int
@@ -132,6 +136,18 @@ int main(int argc, char **argv) {
      * in the constructor above.
      */
     chatter_pub.publish(msg);
+
+    // set translation and origin //
+    transform.setOrigin(tf::Vector3(0.0, 0.0, 0.0));
+
+    // set rotation //
+    tf::Quaternion q;
+    q.setRPY(0.0, 0.0, 1);
+    transform.setRotation(q);
+
+    // broadcasting the transform //
+    br.sendTransform(
+        tf::StampedTransform(transform, ros::Time::now(), "world", "talk"));
 
     ros::spinOnce();
 
