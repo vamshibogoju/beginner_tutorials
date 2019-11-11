@@ -43,9 +43,6 @@ bool changeMessage(beginner_tutorials::baseOutputString::Request &req,
  */
 int main(int argc, char **argv) {
   int loopFreq = 10;
-  // A transform broadcaster object is created
-  static tf::TransformBroadcaster br;
-  tf::Transform transform;
 
   if (argc > 1) {
     // converts string argument to int
@@ -80,6 +77,10 @@ int main(int argc, char **argv) {
    * part of the ROS system.
    */
   ros::init(argc, argv, "talker");
+
+  // A transform broadcaster object is created
+  static tf::TransformBroadcaster br;
+  tf::Transform transform;
 
   /**
    * NodeHandle is the main access point to communications with the ROS system.
