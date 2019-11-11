@@ -21,17 +21,16 @@
  * @brief cpp implementation file for publisher node (talker) as part of ros tutorials
  */
 
-#include <sstream>
+#include <tf/transform_broadcaster.h>
+#include "../include/talker/talker.h"
 #include "ros/ros.h"
 #include "std_msgs/String.h"
 #include "beginner_tutorials/baseOutputString.h"
-#include <tf/transform_broadcaster.h>
 
-extern std::string defaultMessage = "hey this is vamshi";
-
+DefaultMessage messe;
 bool changeMessage(beginner_tutorials::baseOutputString::Request &req,
                    beginner_tutorials::baseOutputString::Response &res) {
-  defaultMessage = req.inputString;
+  messe.defaultMessage = req.inputString;
   ROS_WARN_STREAM("Default string is changed by user to");
   res.outputString = req.inputString;
 
@@ -124,7 +123,7 @@ int main(int argc, char **argv) {
     std_msgs::String msg;
 
     std::stringstream ss;
-    ss << "default message" << count;
+    ss << messe.defaultMessage << count;
     msg.data = ss.str();
 
     ROS_INFO("%s", msg.data.c_str());
